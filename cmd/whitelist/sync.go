@@ -2,6 +2,7 @@ package whitelist
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/hhu-educode/cli/api"
 	"github.com/spf13/cobra"
 	"io/ioutil"
@@ -38,7 +39,7 @@ func syncWhiteList(membersPath string) {
 		log.Fatal(err)
 	}
 
-	log.Printf("Synced %d members", len(members.Usernames))
+	fmt.Printf("Synced %d members", len(members.Usernames))
 }
 
 func init() {

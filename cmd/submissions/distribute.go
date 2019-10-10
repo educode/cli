@@ -68,9 +68,10 @@ func distribute(challenge string, tutorsFile string, deadline string) {
 		})
 	}
 
-	//if err := client.CreateReviews(reviews); err != nil {
-	//	log.Fatal(err)
-	//}
+
+	if err := client.CreateReviews(reviews); err != nil {
+		log.Fatal(err)
+	}
 }
 
 func assignSubmissions(tutors []Tutor, submissions []api.SubmissionInfo) map[string]string {
