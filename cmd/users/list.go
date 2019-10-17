@@ -2,6 +2,7 @@ package users
 
 import (
 	"encoding/csv"
+	"fmt"
 	"github.com/hhu-educode/cli/api"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
@@ -45,7 +46,7 @@ var usersListCommand = &cobra.Command{
 
 func printIds(members []api.MemberInfo) {
 	for _, member := range members {
-		println(member.Id)
+		fmt.Println(member.Id)
 	}
 }
 

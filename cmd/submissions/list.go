@@ -74,7 +74,7 @@ func printJson(submissions []api.SubmissionInfo) {
 
 func init() {
 	submissionsListCommand.Flags().StringVar(&user, "user", "", "Searches for a specific user's submissions")
-	submissionsListCommand.Flags().StringVar(&user, "challenge", "", "Searches for a specific challenge")
+	submissionsListCommand.Flags().StringVar(&challenge, "challenge", "", "Searches for a specific challenge")
 	submissionsListCommand.Flags().BoolVar(&shouldPrintCsv, "csv", false, "Prints the submissions in csv format")
 	submissionsListCommand.Flags().BoolVar(&shouldPrintJson, "json", false, "Prints the submissions in json format")
 }

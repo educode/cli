@@ -27,6 +27,10 @@ func (s *MemberInfo) ToRow() []string {
 	return []string{s.Id, s.Title, s.Firstname, s.Lastname, s.Email, s.Role}
 }
 
+func (c *Client) GetAllMembers() ([]MemberInfo, error) {
+	return c.GetMembers(-1, -1)
+}
+
 func (c *Client) GetMembers(page int, pageSize int) ([]MemberInfo, error) {
 	u, err := c.BaseURL.Parse(MembersBaseUrl)
 	if err != nil {
@@ -34,8 +38,8 @@ func (c *Client) GetMembers(page int, pageSize int) ([]MemberInfo, error) {
 	}
 
 	params := url.Values{}
-	if page != 0 { params.Add(PageParam, strconv.Itoa(page)) }
-	if pageSize != 0 { params.Add(PageSizeParam, strconv.Itoa(pageSize)) }
+	if page >= 0 { params.Add(PageParam, strconv.Itoa(page)) }
+	if pageSize >= 0 { params.Add(PageSizeParam, strconv.Itoa(pageSize)) }
 
 	u.RawQuery = params.Encode()
 	resp, err := c.Request(http.MethodGet, u.String(), nil)
